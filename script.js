@@ -13,8 +13,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const sliderPrev = document.getElementById('slider-prev');
     const sliderNext = document.getElementById('slider-next');
     
-    let currentPhotoIndex = 1;
-    const totalPhotos = 11;
+    // 5.jpeg and 5.MP4 logic: there is no 5.jpeg, so we use an array of valid images
+    const validPhotos = [1, 2, 3, 4, 6, 7, 8, 9, 10, 11, 12];
+    let currentArrayIndex = 0;
+    const totalPhotos = validPhotos.length;
 
     // 1. Transition from Space to Festive Room
     giftBtn1.addEventListener('click', () => {
@@ -56,8 +58,8 @@ document.addEventListener("DOMContentLoaded", () => {
         localVideoContainer.style.display = 'none';
         
         // Setup initial image
-        currentPhotoIndex = 1;
-        sliderImg.src = `photots/${currentPhotoIndex}.jpeg`;
+        currentArrayIndex = 0;
+        sliderImg.src = `photots/${validPhotos[currentArrayIndex]}.jpeg`;
         
         // Show the slider container
         photoSlider.style.display = 'flex';
@@ -65,19 +67,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Slider Controls
     sliderPrev.addEventListener('click', () => {
-        currentPhotoIndex--;
-        if (currentPhotoIndex < 1) {
-            currentPhotoIndex = totalPhotos;
+        currentArrayIndex--;
+        if (currentArrayIndex < 0) {
+            currentArrayIndex = totalPhotos - 1;
         }
-        sliderImg.src = `photots/${currentPhotoIndex}.jpeg`;
+        sliderImg.src = `photots/${validPhotos[currentArrayIndex]}.jpeg`;
     });
 
     sliderNext.addEventListener('click', () => {
-        currentPhotoIndex++;
-        if (currentPhotoIndex > totalPhotos) {
-            currentPhotoIndex = 1;
+        currentArrayIndex++;
+        if (currentArrayIndex >= totalPhotos) {
+            currentArrayIndex = 0;
         }
-        sliderImg.src = `photots/${currentPhotoIndex}.jpeg`;
+        sliderImg.src = `photots/${validPhotos[currentArrayIndex]}.jpeg`;
     });
 
     // Confetti Generator
