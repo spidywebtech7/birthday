@@ -4,7 +4,17 @@ document.addEventListener("DOMContentLoaded", () => {
     const mainScreen = document.getElementById('main-screen');
     const giftBtn1 = document.getElementById('gift-btn-1');
     const giftBtn2 = document.getElementById('gift-btn-2');
-    const photoGallery = document.getElementById('photo-gallery');
+    const localVideoContainer = document.getElementById('local-video-container');
+    const localVideo = document.getElementById('local-video');
+    const giftBtn3 = document.getElementById('gift-btn-3');
+    
+    const photoSlider = document.getElementById('photo-slider');
+    const sliderImg = document.getElementById('slider-main-img');
+    const sliderPrev = document.getElementById('slider-prev');
+    const sliderNext = document.getElementById('slider-next');
+    
+    let currentPhotoIndex = 1;
+    const totalPhotos = 11;
 
     // 1. Transition from Space to Festive Room
     giftBtn1.addEventListener('click', () => {
@@ -25,29 +35,49 @@ document.addEventListener("DOMContentLoaded", () => {
         }, 1500); // 1.5 seconds for fade out CSS transition to finish
     });
 
-    // 2. Open Gallery and Spawn 11 Images Dynamically
+    // 2. Open Local Video
     giftBtn2.addEventListener('click', () => {
         // Hide the button so they don't click it multiple times
         giftBtn2.style.display = 'none';
         
-        // Show the gallery container
-        photoGallery.style.display = 'grid';
+        // Show the local video container and play
+        localVideoContainer.style.display = 'flex';
+        localVideo.play();
+    });
+
+    // 3. Video Ended Event
+    localVideo.addEventListener('ended', () => {
+        giftBtn3.style.display = 'block';
+    });
+
+    // 4. Open Photo Slider
+    giftBtn3.addEventListener('click', () => {
+        // Hide video container
+        localVideoContainer.style.display = 'none';
         
-        // Ensure there are 11 photos to load (1.jpeg to 11.jpeg)
-        for(let i = 1; i <= 11; i++) {
-            let imgDiv = document.createElement('div');
-            imgDiv.classList.add('gallery-item');
-            
-            // Set the background image to the photots folder
-            imgDiv.style.backgroundImage = `url('photots/${i}.jpeg')`;
-            
-            // Staggered pop-in animation delay
-            // Each image pops in 0.2s after the previous one
-            let delay = (i * 0.2); 
-            imgDiv.style.animation = `popIn 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) ${delay}s forwards`;
-            
-            photoGallery.appendChild(imgDiv);
+        // Setup initial image
+        currentPhotoIndex = 1;
+        sliderImg.src = `photots/${currentPhotoIndex}.jpeg`;
+        
+        // Show the slider container
+        photoSlider.style.display = 'flex';
+    });
+
+    // Slider Controls
+    sliderPrev.addEventListener('click', () => {
+        currentPhotoIndex--;
+        if (currentPhotoIndex < 1) {
+            currentPhotoIndex = totalPhotos;
         }
+        sliderImg.src = `photots/${currentPhotoIndex}.jpeg`;
+    });
+
+    sliderNext.addEventListener('click', () => {
+        currentPhotoIndex++;
+        if (currentPhotoIndex > totalPhotos) {
+            currentPhotoIndex = 1;
+        }
+        sliderImg.src = `photots/${currentPhotoIndex}.jpeg`;
     });
 
     // Confetti Generator

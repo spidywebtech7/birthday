@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,19 +8,24 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Outfit:wght@300;400;600;700&family=Cinzel:wght@700;800;900&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Outfit:wght@300;400;600;700&family=Cinzel:wght@700;800;900&display=swap"
+        rel="stylesheet">
     <!-- FontAwesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
     <!-- SCREEN 1: HAPPY EVENTS (INTRO SCREEN) -->
     <section id="intro-screen" class="intro-active">
-        
-        <!-- Crossfading Image Slideshow Background -->
-        <div class="slideshow-bg"></div>
+
+        <!-- Video Background -->
+        <video class="video-bg" autoplay loop muted playsinline>
+            <source src="photots/5.MP4" type="video/mp4">
+        </video>
         <div class="video-overlay"></div>
 
         <div class="main-wrapper">
@@ -59,8 +65,9 @@
             <div class="hero-section">
                 <div class="hero-content">
                     <h1>The Best Time To Celebrate</h1>
-                    <p>Cakes are special. Every birthday, every celebration ends<br>with something sweet, a cake, and people remember.</p>
-                    
+                    <p>Cakes are special. Every birthday, every celebration ends<br>with something sweet, a cake, and
+                        people remember.</p>
+
                     <div class="hero-buttons">
                         <!-- THIS IS GIFT BUTTON 1 -->
                         <button id="gift-btn-1" class="btn btn-primary">GIFT <i class="fas fa-gift"></i></button>
@@ -73,10 +80,10 @@
     <!-- SCREEN 2: MAIN FESTIVE ROOM SCREEN -->
     <section id="main-screen">
         <div class="room-bg"></div>
-        
+
         <!-- Confetti container -->
         <div id="confetti-container"></div>
-        
+
         <div class="main-content">
             <h1 class="main-title">Wishing You The Best <span class="highlight">Birthday</span> Ever!</h1>
             <p class="main-subtitle">May all your magical wishes come true.</p>
@@ -86,10 +93,26 @@
             </div>
         </div>
 
-        <!-- 11 Image Animated Gallery Container -->
-        <div id="photo-gallery" class="photo-gallery-container"></div>
+        <!-- Local Video Container -->
+        <div id="local-video-container" class="local-video-wrapper" style="display: none;">
+            <video id="local-video" width="100%" height="100%" controls>
+                <source src="photots/7.mp4" type="video/mp4">
+            </video>
+            <!-- New Gift Button to show after video ends -->
+            <button id="gift-btn-3" class="gift-button" style="display: none;">GIFT <i class="fas fa-gift"></i></button>
+        </div>
+
+        <!-- Photo Slider Container (Restored) -->
+        <div id="photo-slider" class="photo-slider-container" style="display: none;">
+            <button id="slider-prev" class="slider-btn"><i class="fas fa-chevron-left"></i></button>
+            <div class="slider-image-wrapper">
+                <img id="slider-main-img" src="" alt="Gallery Image">
+            </div>
+            <button id="slider-next" class="slider-btn"><i class="fas fa-chevron-right"></i></button>
+        </div>
     </section>
 
     <script src="script.js"></script>
 </body>
+
 </html>
