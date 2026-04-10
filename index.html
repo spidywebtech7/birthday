@@ -1,87 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HappyEvents - The Best Time To Celebrate</title>
+    <title>Magical Happy Birthday</title>
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Outfit:wght@300;400;600;700&display=swap"
-        rel="stylesheet">
-    <!-- FontAwesome for Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;800;900&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-    <!-- Background Video -->
-    <video autoplay loop muted playsinline id="bg-video">
-        <source src="photots/5.MP4" type="video/mp4">
-        Your browser does not support HTML5 video.
-    </video>
-
-    <!-- Gradient Overlay -->
-    <div class="video-overlay"></div>
-
-    <!-- Main Container -->
-    <div class="main-wrapper">
-
-        <!-- Top Contact Bar -->
-        <div class="top-bar animate-element delay-1">
-            <div class="top-bar-left">
-                <span><i class="fas fa-phone-alt"></i> +1 123 2345 678</span>
-                <span><i class="far fa-envelope"></i> example@happy.com</span>
-            </div>
-            <div class="top-bar-right">
-                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-youtube"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-pinterest-p"></i></a>
-            </div>
+    <!-- 10 SECONDS INTRO SCREEN -->
+    <section id="intro-screen" class="intro-active">
+        <div class="space-bg"></div>
+        <div class="intro-content">
+            <h1 class="gold-3d-text">HAPPY<br>BIRTHDAY</h1>
         </div>
+    </section>
 
-        <!-- Header -->
-        <header class="header animate-element delay-2">
-            <div class="logo">
-                <a href="#">Happy<span>Events</span></a>
-            </div>
-            <nav class="nav">
-                <ul>
-                    <li><a href="#" class="active">HOME</a></li>
+    <!-- MAIN FESTIVE ROOM SCREEN -->
+    <section id="main-screen">
+        <div class="room-bg"></div>
+        
+        <!-- Confetti container -->
+        <div id="confetti-container"></div>
+        
+        <div class="main-content">
+            <h1 class="main-title">Wishing You The Best <span class="highlight">Birthday</span> Ever!</h1>
+            <p class="main-subtitle">May all your magical wishes come true.</p>
+        </div>
+    </section>
 
-                </ul>
-            </nav>
-        </header>
-
-        <!-- Hero Content -->
-        <section class="hero-section animate-element delay-3">
-            <div class="hero-content">
-                <h1>The Best Time To Celebrate</h1>
-                <p>Cakes are special. Every birthday, every celebration ends<br>with something sweet, a cake, and people
-                    remember.</p>
-
-                <div class="hero-buttons">
-
-                    <div class="play-promo">
-                        <a href="#" class="play-btn">
-                            <i class="fas fa-play"></i>
-                        </a>
-                        <span class="play-text">VIEW THE PROMO</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-    </div>
-
-    <!-- Script for animations and interactions -->
     <script src="script.js"></script>
 </body>
-
 </html>
