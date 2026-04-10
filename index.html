@@ -3,27 +3,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Magical Happy Birthday</title>
+    <title>HappyEvents - The Best Time To Celebrate</title>
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;800;900&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Outfit:wght@300;400;600;700&family=Cinzel:wght@700;800;900&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- INTRO SCREEN -->
+    <!-- SCREEN 1: HAPPY EVENTS (INTRO SCREEN) -->
     <section id="intro-screen" class="intro-active">
-        <video autoplay loop muted playsinline class="space-bg">
-            <source src="photots/5.MP4" type="video/mp4">
-        </video>
-        <div class="intro-content">
-            <h1 class="gold-3d-text">HAPPY<br>BIRTHDAY<br>MANSHI</h1>
-            <button id="gift-btn-1" class="gift-button">GIFT <i class="fas fa-gift"></i></button>
+        
+        <!-- Crossfading Image Slideshow Background -->
+        <div class="slideshow-bg"></div>
+        <div class="video-overlay"></div>
+
+        <div class="main-wrapper">
+            <!-- Top Contact Bar -->
+            <div class="top-bar">
+                <div class="top-bar-left">
+                    <span><i class="fas fa-phone-alt"></i> +1 123 2345 678</span>
+                    <span><i class="far fa-envelope"></i> example@happy.com</span>
+                </div>
+                <div class="top-bar-right">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                </div>
+            </div>
+
+            <!-- Header -->
+            <header class="header">
+                <div class="logo">
+                    <a href="#">Happy<span>Events</span></a>
+                </div>
+                <nav class="nav">
+                    <ul>
+                        <li><a href="#" class="active">HOME</a></li>
+                        <li><a href="#">SERVICES</a></li>
+                        <li><a href="#">FEATURES</a></li>
+                        <li><a href="#">SHORTCODES</a></li>
+                        <li><a href="#">POST TYPES</a></li>
+                        <li><a href="#">SHOP</a></li>
+                    </ul>
+                </nav>
+            </header>
+
+            <!-- Hero Content -->
+            <div class="hero-section">
+                <div class="hero-content">
+                    <h1>The Best Time To Celebrate</h1>
+                    <p>Cakes are special. Every birthday, every celebration ends<br>with something sweet, a cake, and people remember.</p>
+                    
+                    <div class="hero-buttons">
+                        <!-- THIS IS GIFT BUTTON 1 -->
+                        <button id="gift-btn-1" class="btn btn-primary">GIFT <i class="fas fa-gift"></i></button>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- MAIN FESTIVE ROOM SCREEN -->
+    <!-- SCREEN 2: MAIN FESTIVE ROOM SCREEN -->
     <section id="main-screen">
         <div class="room-bg"></div>
         
@@ -34,6 +81,7 @@
             <h1 class="main-title">Wishing You The Best <span class="highlight">Birthday</span> Ever!</h1>
             <p class="main-subtitle">May all your magical wishes come true.</p>
             <div class="gift-action-area">
+                <!-- THIS IS GIFT BUTTON 2 -->
                 <button id="gift-btn-2" class="gift-button">GIFT <i class="fas fa-gift"></i></button>
             </div>
         </div>
