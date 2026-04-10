@@ -36,9 +36,8 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: url('photots/space.png') no-repeat center center/cover;
+    object-fit: cover;
     z-index: -1;
-    animation: zoomSpace 20s linear infinite;
     opacity: 0.8;
 }
 
