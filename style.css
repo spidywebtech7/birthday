@@ -210,7 +210,7 @@ a {
     left: 0;
     width: 100%;
     height: 100%;
-    background: url('photots/room.png') no-repeat center center/cover;
+    background: url('/photots/room.png') no-repeat center center/cover;
     z-index: -1;
     animation: magicReveal 3s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
 }
