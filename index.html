@@ -12,13 +12,14 @@
 </head>
 <body>
 
-    <!-- 10 SECONDS INTRO SCREEN -->
+    <!-- INTRO SCREEN -->
     <section id="intro-screen" class="intro-active">
         <video autoplay loop muted playsinline class="space-bg">
             <source src="photots/5.MP4" type="video/mp4">
         </video>
         <div class="intro-content">
-            <h1 class="gold-3d-text">HAPPY<br>BIRTHDAY</h1>
+            <h1 class="gold-3d-text">HAPPY<br>BIRTHDAY<br>MANSHI</h1>
+            <button id="gift-btn-1" class="gift-button">GIFT <i class="fas fa-gift"></i></button>
         </div>
     </section>
 
@@ -32,7 +33,13 @@
         <div class="main-content">
             <h1 class="main-title">Wishing You The Best <span class="highlight">Birthday</span> Ever!</h1>
             <p class="main-subtitle">May all your magical wishes come true.</p>
+            <div class="gift-action-area">
+                <button id="gift-btn-2" class="gift-button">GIFT <i class="fas fa-gift"></i></button>
+            </div>
         </div>
+
+        <!-- 11 Image Animated Gallery Container -->
+        <div id="photo-gallery" class="photo-gallery-container"></div>
     </section>
 
     <script src="script.js"></script>
