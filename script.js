@@ -13,6 +13,35 @@ document.addEventListener("DOMContentLoaded", () => {
     const sliderPrev = document.getElementById('slider-prev');
     const sliderNext = document.getElementById('slider-next');
     
+    // Attempt to play background audio
+    const bgAudio = document.getElementById('bg-audio');
+    
+    function startAudio() {
+        if (bgAudio && bgAudio.paused) {
+            bgAudio.play().then(() => {
+                console.log("Audio started successfully");
+                // Remove listeners once audio starts
+                removeInteractionListeners();
+            }).catch(e => console.log("Audio play failed:", e));
+        }
+    }
+
+    function removeInteractionListeners() {
+        document.removeEventListener('click', startAudio);
+        document.removeEventListener('touchstart', startAudio);
+        document.removeEventListener('keydown', startAudio);
+    }
+
+    if (bgAudio) {
+        // Initial attempt (might be blocked)
+        bgAudio.play().catch(() => {
+            // Listen for any interaction
+            document.addEventListener('click', startAudio);
+            document.addEventListener('touchstart', startAudio);
+            document.addEventListener('keydown', startAudio);
+        });
+    }
+
     // 5.jpeg and 5.MP4 logic: there is no 5.jpeg, so we use an array of valid images
     const validPhotos = [1, 2, 3, 4, 6, 7, 8, 9, 10, 11, 12];
     let currentArrayIndex = 0;
@@ -20,6 +49,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // 1. Transition from Space to Festive Room
     giftBtn1.addEventListener('click', () => {
+        // Try to play audio if it hasn't started yet
+        if (bgAudio && bgAudio.paused) {
+            bgAudio.play().catch(e => console.log("Audio play failed on click:", e));
+        }
+
         // Fade out intro
         introScreen.style.opacity = '0';
         
@@ -42,6 +76,9 @@ document.addEventListener("DOMContentLoaded", () => {
         // Hide the button so they don't click it multiple times
         giftBtn2.style.display = 'none';
         
+        // Pause background music to prevent "double song"
+        if (bgAudio) bgAudio.pause();
+        
         // Show the local video container and play
         localVideoContainer.style.display = 'flex';
         localVideo.play();
@@ -50,7 +87,11 @@ document.addEventListener("DOMContentLoaded", () => {
     // 3. Video Ended Event
     localVideo.addEventListener('ended', () => {
         giftBtn3.style.display = 'block';
+        // Resume background music after video ends
+        if (bgAudio) bgAudio.play().catch(e => console.log("Audio resume failed:", e));
     });
+
+    let slideInterval;
 
     // 4. Open Photo Slider
     giftBtn3.addEventListener('click', () => {
@@ -63,7 +104,20 @@ document.addEventListener("DOMContentLoaded", () => {
         
         // Show the slider container
         photoSlider.style.display = 'flex';
+
+        // Auto change photos every 3 seconds
+        if (!slideInterval) {
+            slideInterval = setInterval(nextSlide, 3000);
+        }
     });
+
+    function nextSlide() {
+        currentArrayIndex++;
+        if (currentArrayIndex >= totalPhotos) {
+            currentArrayIndex = 0;
+        }
+        sliderImg.src = `photots/${validPhotos[currentArrayIndex]}.jpeg`;
+    }
 
     // Slider Controls
     sliderPrev.addEventListener('click', () => {
@@ -72,14 +126,18 @@ document.addEventListener("DOMContentLoaded", () => {
             currentArrayIndex = totalPhotos - 1;
         }
         sliderImg.src = `photots/${validPhotos[currentArrayIndex]}.jpeg`;
+
+        // Reset auto change interval on manual interaction
+        clearInterval(slideInterval);
+        slideInterval = setInterval(nextSlide, 3000);
     });
 
     sliderNext.addEventListener('click', () => {
-        currentArrayIndex++;
-        if (currentArrayIndex >= totalPhotos) {
-            currentArrayIndex = 0;
-        }
-        sliderImg.src = `photots/${validPhotos[currentArrayIndex]}.jpeg`;
+        nextSlide();
+
+        // Reset auto change interval on manual interaction
+        clearInterval(slideInterval);
+        slideInterval = setInterval(nextSlide, 3000);
     });
 
     // Confetti Generator
